@@ -1,0 +1,7 @@
+[
+	{ title: 'Jaws', year: 1979, director: 'Firstname Surname' },
+	{ title: 'The Goonies', year: 1989, director: 'Joe Bloggs' },
+	{ title: 'Back To The Future', year: 1984, director: 'Steven Speilburg' },
+	{ title: 'Lion King', year: 1995, director: 'Disney Person' },
+	{ title: '12 Angry Men', year: 1964, director: 'Bob Rob' }
+]

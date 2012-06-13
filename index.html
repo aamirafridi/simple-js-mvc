@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Simple JavaScript MVC</title>
+	<link href="css/app.css" rel="stylesheet" />
+	
+	<!-- framework and plugins should live in a separate plugins folder -->
+	<script src="js/plugins/spin.min.js"></script>
+	
+	<!-- reusable classes should go in a separate classes folder which is duplicated into every project you do -->
+	<script src="js/classes/events/Event.js"></script>
+	<script src="js/classes/events/EventDispatcher.js"></script>
+	<script src="js/classes/data/Loader.js"></script>
+	<script src="js/classes/utils/Utils.js"></script>
+	
+	<!-- mvc code is project specific and should go in it's own folder -->
+	<script src="js/topfilms/controllers/FilmList.js"></script>
+	<script src="js/topfilms/models/LocalStore.js"></script>
+	<script src="js/topfilms/views/Panel.js"></script>
+	<script src="js/topfilms/TopFilms.js"></script>
+	
+	<!-- init code is better here because it you can pass sever-side variables through and developers can see what is being launched when -->
+	<script>
+		var topfilms = new TopFilms();
+		
+		window.onload = function() {
+			topfilms.init({
+				filmlist: {
+					view:  { el: document.getElementsByTagName('body')[0] },
+					model: { url: 'js/films.json' }
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>
