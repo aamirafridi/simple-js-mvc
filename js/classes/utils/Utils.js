@@ -13,10 +13,11 @@ var Utils = {
 		}
 	},
 	slugify: function(text) {
-		return text.toLowerCase().replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, '_').replace(/\s/gi, '-');
+		return text.toLowerCase().replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, '_').replace(/\s/gi, '-').replace(/-_-/gi, '-');
 	},
 	getHash: function() {
-		return window.location.hash.split('/').splice(1);
+		var matches = window.location.hash.split('/');
+		return matches.splice(1, matches.length);
 	},
 	setHash: function(values) {
 		window.location.hash = '/'+values.join('/');
@@ -59,5 +60,15 @@ var Utils = {
 		e.cancelBubble = true;
 		if (e.stopPropagation) { e.stopPropagation(); }
 		if (e.preventDefault) { e.preventDefault(); }
+	},
+	merge: function(a, b) {
+		for (var p in b) {
+			try {
+				if (b[p].constructor == Object) { a[p] = this.merge(a[p], b[p]); }
+				else { a[p] = b[p]; }
+			}
+			catch(e) { a[p] = b[p]; }
+		}
+		return a;
 	}
 }
